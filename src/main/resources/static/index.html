@@ -1,0 +1,98 @@
+<link rel="stylesheet" href="styles.css" />
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Sketch-a-Text</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+</head>
+<body>
+  <div class="container">
+    <div class="app">
+
+      <!-- Controls Panel -->
+      <section class="controls">
+        <h2>Sketch-a-Text</h2>
+        <h1>Text to Image Renderer</h1>
+
+        <!-- Image Upload -->
+        <div class="control">
+          <input type="file" id="image" hidden />
+          <label for="image" class="file-button">Choose Image</label>
+          <span id="file-name" class="file-name">No file selected</span>
+        </div>
+
+        <!-- Text Input -->
+        <div class="control">
+          <label for="text">Text</label>
+          <textarea id="text" placeholder="Enter text" rows="6"></textarea>
+        </div>
+
+        <!-- Render Mode -->
+        <div class="control">
+          <label for="renderMode" title="word/character per pixel">Render Mode</label>
+          <select name="renderMode" id="renderMode">
+            <option value="BY_WORD">by word</option>
+            <option value="BY_CHARACTER">by character</option>
+          </select>
+        </div>
+
+        <!-- Color Mode -->
+        <div class="control">
+          <label for="colorMode" title="color of text on image">Color</label>
+          <select name="colorMode" id="colorMode">
+            <option value="COLOR">color match</option>
+            <option value="GRAYSCALE">grayscale</option>
+          </select>
+        </div>
+
+        <!-- Action -->
+        <button type="button" onclick="render()">Render</button>
+      </section>
+
+      <!-- Preview Panel -->
+      <section class="preview">
+        <h3>Result</h3>
+        <div class="preview-box">
+          <img id="result" onclick="openPreview()" />
+          <div id="preview-text" class="preview-text">
+            <h1 id="instructions"> How to use </h1>
+            <p> 1. Choose an image (PNG or JPEG, max 4500x4500 pixels) </p>
+            <p> 2. Enter the text you want to render (max 10,000 characters) </p>
+            <p> 3. Select render (per pixel) and color modes </p>
+            <p> 4. Click "Render" and wait for the result </p>
+            <p class="tips"> Tip #1: Use high-contrast and/or higher quality images for better results </p>
+            <p class="tips"> Tip #2: Shorter text yields clearer images </p>
+            <p class="tips"> Tip #3: Click on the image to expand, scroll to zoom </p>
+            <p class="tips"> Tip #4: By character will generally be more detailed </p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="links">
+      <a href="https://github.com/MaxxaK" target="_blank" title="my GitHub"><i class='bx bxl-github'></i></a>
+    </div>
+    <div class="credits">
+      <span>Made with &hearts; by MK</span>
+      <span> | Powered by Java Spring Boot </span>
+    </div>
+  </footer>
+
+  <div id="overlay" class="overlay" onclick="closePreview()">
+    <img id="overlay-img" />
+  </div>
+
+  <script src="scripts.js" defer></script>
+
+</body>
+</html>
