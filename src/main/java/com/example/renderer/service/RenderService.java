@@ -40,7 +40,7 @@ public class RenderService {
                 throw new IllegalArgumentException("Uploaded file is not a valid image");
             }
             //validate image size
-            if (input.getWidth() > 4500 || input.getHeight() > 4500) {
+            if (input.getWidth() > 2500 || input.getHeight() > 2500) {
                 throw new IllegalArgumentException("Image is too large");
             }
 
@@ -74,6 +74,9 @@ public class RenderService {
             ByteArrayOutputStream finalOutputStream = new ByteArrayOutputStream();
             ImageIO.write(output, "png", finalOutputStream);
 
+            output.flush();
+            sourceImage.flush();
+            
             return finalOutputStream.toByteArray();
 
         } catch (IOException e) {
@@ -81,4 +84,5 @@ public class RenderService {
         }
     }
 }
+
 
